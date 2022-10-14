@@ -11,7 +11,7 @@ server.app.use(bodyParser.urlencoded({extended:true}));
 server.app.use('/',defaultRoutes);
 server.app.use('/personaje',personajeRoutes);
 
-mongoose.connect('mongodb+srv://csm_personajes:<feliford19>@cluster0.jd3zj3t.mongodb.net/personajesDb',(error)=>{
+mongoose.connect('mongodb+srv://csm_personajes:feliford19@cluster0.jd3zj3t.mongodb.net/personajesDb',(error)=>{
     if(error){
         throw error;
     }
