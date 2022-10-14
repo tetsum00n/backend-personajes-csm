@@ -1,4 +1,4 @@
-import { Request, response, Response, Router } from 'express';
+import { Request, Response, Router } from 'express';
 import { Personaje } from '../models/personaje.model';
 
 const personajeRoutes = Router();
