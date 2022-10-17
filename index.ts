@@ -6,22 +6,18 @@ import bodyParser from "body-parser";
 
 const server = new Server();
 
-var express = require('express')
-var cors = require('cors')
-var app = express()
-
-server.app.use(cors());
-app.get('/products/:id', function (req: any, res: { json: (arg0: { msg: string; }) => void; }, next: any) {
-    res.json({msg: 'This is CORS-enabled for all origins!'})
-  })
-   
-  app.listen(80, function () {
-    console.log('CORS-enabled web server listening on port 80')
-  })
+server.app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
 server.app.use(bodyParser.json());
 server.app.use(bodyParser.urlencoded({extended:true}));
 server.app.use('/',defaultRoutes);
 server.app.use('/personaje',personajeRoutes);
+
 
 
 mongoose.connect('mongodb+srv://csm_personajes:feliford19@cluster0.jd3zj3t.mongodb.net/personajeDb',(error)=>{
