@@ -6,6 +6,11 @@ import bodyParser from "body-parser";
 
 const server = new Server();
 
+var express = require('express')
+var cors = require('cors')
+var app = express()
+
+server.app.use(cors());
 server.app.use(bodyParser.json());
 server.app.use(bodyParser.urlencoded({extended:true}));
 server.app.use('/',defaultRoutes);
